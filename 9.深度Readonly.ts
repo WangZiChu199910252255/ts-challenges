@@ -1,4 +1,12 @@
 /*
+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @Date: 2022-12-15 10:30:38
+ * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @LastEditTime: 2023-03-07 17:04:19
+ * @FilePath: /ts-challenges/9.深度Readonly.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/*
   9 - 深度 Readonly
   -------
   by Anthony Fu (@antfu) #中等 #readonly #object-keys #deep
@@ -40,9 +48,8 @@
 /* _____________ 你的代码 _____________ */
 
 type DeepReadonly<T> = {
-  readonly [K in typeof T]:T[P] extends object ? DeepReadonly<T[P]> : T[P]
+  readonly [P in keyof T]: keyof T[P] extends never ? T[P] : DeepReadonly<T[P]>;
 }
-
 
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
