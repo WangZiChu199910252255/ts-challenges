@@ -26,9 +26,12 @@
 */
 
 /* _____________ 你的代码 _____________ */
+type Space = ' ' | '\n' | '\t';
 
-type ReversalString<T,str extends string = ''> = T extends `${infer R}${infer S}` ? ReversalString<S,`${R}${str}`> : str
-type test = ReversalString<' 123 '>
+type TrimRight<T extends string> = T extends `${infer R}${Space}`
+  ? TrimRight<R>
+  : T;
+
 // type TrimRight<S extends string,T extends string = ReversalString<S>,str extends string = '',bol extends boolean = false> = T extends '' ? ReversalString<str> : bol extends true ? 
     // T extends ` ${infer L}` ? TrimRight<S,L,str,false> : TrimRight<S,L,str,true>
 
